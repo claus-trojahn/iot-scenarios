@@ -1,0 +1,14 @@
+{
+  "name": "iot-gateway",
+  "version": "1.0.0",
+  "description": "Simulates a gateway that retrieves telemetry data from edge devices to the gateway and than further dispatches to an IoT hub.",
+  "main": "iot-gateway.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mqtt": "^2.9.2"
+  }
+}
