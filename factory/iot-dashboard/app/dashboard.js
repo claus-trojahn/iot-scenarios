@@ -24,10 +24,16 @@ $(document).ready(() => {
                 text: 'time'
             }
         },
-        series: [{
-            name: 'temp',
-            data: []
-        }]
+        series: [
+            {
+                name: 'device_1',
+                data: []
+            },
+            {
+                name: 'device_2',
+                data: []
+            }
+        ]
     }); 
 
     var client = mqtt.connect('mqtt://test.mosquitto.org');
@@ -43,9 +49,23 @@ $(document).ready(() => {
 
         //$('#container').append(data.payload + '<br/>');
 
-        chart.series[0].addPoint(data.payload);
-
+        if(data.source === 'device_1') {
+            chart.series[0].addPoint(data.payload);
+        } else if(data.source === 'device_2') {
+            chart.series[1].addPoint(data.payload);
+        }
     //client.end();
     });
+
+    $('#button1').click(function() {
+        console.log('click');
+
+        client.publish('device_command', JSON.stringify({
+            target: 'device_1',
+            timestamp: Date.now(),
+            payload: 'reduce_cycle'
+        }));
+    });
+
 
 });
