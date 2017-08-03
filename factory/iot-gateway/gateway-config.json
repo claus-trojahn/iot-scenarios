@@ -1,0 +1,16 @@
+{
+    "name": "sample gateway",
+    "version" : "1.0",
+    "broker" : "mqtt://test.mosquitto.org",
+    "devices" : [
+        {
+            "name": "device_1"            
+        },
+        {
+            "name": "device_2"
+        },
+        {
+            "name": "device_3"
+        }
+    ]
+}
